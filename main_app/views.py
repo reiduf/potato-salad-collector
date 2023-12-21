@@ -13,3 +13,9 @@ def potatoes_index(request):
     return render(request, 'potatoes/index.html', {
         'potatoes': potatoes
     })
+
+def potatoes_detail(request, potato_id):
+    potato = Potato.objects.get(id=potato_id)
+    return render(request, 'potatoes/detail.html', {
+        'potato': potato
+    })
