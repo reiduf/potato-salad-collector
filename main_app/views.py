@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Potato
 
 # Create your views here.
@@ -24,3 +24,11 @@ def potatoes_detail(request, potato_id):
 class PotatoCreate(CreateView):
     model = Potato
     fields = '__all__'
+
+class PotatoUpdate(UpdateView):
+    model = Potato
+    fields = '__all__'
+
+class PotatoDelete(DeleteView):
+    model = Potato
+    success_url = '/potatoes'

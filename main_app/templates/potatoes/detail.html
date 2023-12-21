@@ -9,6 +9,10 @@
       <p>Notes: {{ potato.description }}</p>
       <p>Rating: {{ potato.rating }}</p>
     </div>
+    <div class="card-action">
+      <a href="{% url 'potatoes_update' potato.id %}">Edit</a>
+      <a href="{% url 'potatoes_delete' potato.id %}">Delete</a>
+    </div>
   </div>
 
 {% endblock %}
