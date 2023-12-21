@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Potato
 
 # Create your views here.
@@ -19,3 +20,7 @@ def potatoes_detail(request, potato_id):
     return render(request, 'potatoes/detail.html', {
         'potato': potato
     })
+
+class PotatoCreate(CreateView):
+    model = Potato
+    fields = '__all__'
