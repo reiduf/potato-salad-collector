@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Potato
+from .forms import CommentForm
 
 # Create your views here.
 def home(request):
@@ -17,9 +18,23 @@ def potatoes_index(request):
 
 def potatoes_detail(request, potato_id):
     potato = Potato.objects.get(id=potato_id)
+    comment_form = CommentForm()
     return render(request, 'potatoes/detail.html', {
-        'potato': potato
+        'potato': potato,
+        'comment_form': comment_form
     })
+
+def add_comment(request, potato_id):
+  pass 
+
+def add_comment(request, potato_id):
+  form = CommentForm(request.POST)
+
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.potato_id = potato_id
+    new_comment.save()
+  return redirect('detail', potato_id=potato_id)
 
 class PotatoCreate(CreateView):
     model = Potato
