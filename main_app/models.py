@@ -9,8 +9,8 @@ class Store(models.Model):
   def __str__(self):
     return self.name
 
-  # def get_absolute_url(self):
-  #   return reverse('store_detail', kwargs={'pk': self.id})
+  def get_absolute_url(self):
+    return reverse('stores_detail', kwargs={'pk': self.id})
 
 class Potato(models.Model):
   brand = models.CharField(max_length=100)
